@@ -2,8 +2,10 @@ import React from 'react';
 import {
   TouchableHighlight,
 } from 'react-native';
+import { Avatar } from 'react-native-elements';
+
 import {
-  SafeAreaView, StyleSheet, ScrollView
+  SafeAreaView, StyleSheet, ScrollView,Image
 } from "react-native";
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation'
@@ -65,7 +67,6 @@ const Product = createStackNavigator(
         headerLeft: () => <NavigationDrawerHeader navigationProps={navigation} />,
         headerTitle: "Product",
         headerTitleAlign:"center"
-
       }),
     },
   },
@@ -81,9 +82,12 @@ const AppNavigator = createDrawerNavigator({
  
   Login:{
     screen:Login,
-    navigationOptions: {
-      header: null,
-    }
+   navigationOptions: {
+      drawerIcon: () => {
+        return <Fontisto name="heart" size={20}  />
+      }
+    
+    },
   },
   Home: {
     screen: Product,
@@ -98,16 +102,26 @@ const AppNavigator = createDrawerNavigator({
   Cart: {
     screen: Cart,
   },
+  
+},
+ 
+{
   contentComponent: (props) => (
     <SafeAreaView>
       <View style={stylesSidebar.sideMenuContainer}>
         <View style={stylesSidebar.profileHeader}>
           <View style={stylesSidebar.profileHeaderPicCircle}>
-            <Text style={{ fontSize: 25, color: "#05075d" }}>
-              {"About React".charAt(0)}
-            </Text>
+          <Avatar
+            size="large"
+            rounded
+
+  
+  source={require("./assets/WelcomePage.jpg")}
+
+/>
+          
           </View>
-          <Text style={stylesSidebar.profileHeaderText}>PROFILE</Text>
+          <Text style={stylesSidebar.profileHeaderText}>CAROLINE MATHEW</Text>
         </View>
 
         <View style={stylesSidebar.profileHeaderLine} />
@@ -127,22 +141,8 @@ const AppNavigator = createDrawerNavigator({
     </SafeAreaView>
 
   )
-},
- {
-  initialRouteName: 'Welcome',
-  defaultNavigationOptions : ({ navigation }) => ({
-    headerStyle: {
-      backgroundColor: '#2962FF',
-    },
-    headerTintColor: '#fff',
-    headerRight: (props) => (
-    <ShoppingCartIcon/>
-    ),
-  }),
-  headerMode: 'screen',
-}
+});
 
-);
 const stylesSidebar = StyleSheet.create({
   sideMenuContainer: {
     width: "100%",
@@ -151,6 +151,15 @@ const stylesSidebar = StyleSheet.create({
     paddingTop: 40,
     color: "rgb(0,0,0)",
   },
+  imageali: {
+    borderRadius: 20,
+    height: 5,
+    width: 5,
+    margin:15,
+    top:15,
+    
+  },
+  
   profileHeader: {
     flexDirection: "row",
     backgroundColor: "#44bcd8",

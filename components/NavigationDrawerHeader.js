@@ -20,7 +20,8 @@ const NavigationDrawerHeader = (props) => {
   return (
     <View style={{ flexDirection: "row" }}>
       <TouchableOpacity onPress={toggleDrawer}>
-        <Entypo name="menu" size={24} color="white" />
+        <Entypo name="menu" size={24} color="blue" />
+        
       </TouchableOpacity>
     </View>
   );
