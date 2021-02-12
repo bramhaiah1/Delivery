@@ -30,7 +30,7 @@ const LoginScreen = ({ errorText, navigation, ...props }) => {
 
 
   const _onSignUpPressed = async () => {
-    navigation.navigate("Home")
+    navigation.navigate("ChangePassword")
 
     
   };

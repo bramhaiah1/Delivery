@@ -14,7 +14,7 @@ import store from './src/store';
 import ShoppingCartIcon from './src/screens/ShoppingCartIcon'
 import WelcomeScreen from './src/screens/WelcomeScreen'
 import Fontisto from "react-native-vector-icons/Fontisto";
-
+import MyProfile from "./src/screens/MyProfile"
  import { MaterialIcons } from '@expo/vector-icons';
  import Icon from "react-native-vector-icons/FontAwesome5";
  import { createDrawerNavigator, DrawerItems } from "react-navigation-drawer";
@@ -25,6 +25,8 @@ import Home from './src/screens/Home';
 import Cart from './src/screens/ShopingCart';
 import LoginScreen from './src/screens/LoginScreen'
 import { View ,Text} from 'react-native';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
+
 const Welcome = createStackNavigator(
   {
     welcome: {
@@ -66,41 +68,54 @@ const Product = createStackNavigator(
 
         headerLeft: () => <NavigationDrawerHeader navigationProps={navigation} />,
         headerTitle: "Product",
-        headerTitleAlign:"center"
+        headerTitleAlign:"center",
+        headerRight: (props) => (
+          <ShoppingCartIcon/>
+          ),
       }),
     },
   },
   
 );
 const AppNavigator = createDrawerNavigator({
-  Welcome:{
+  MyProfile:{
     screen:Welcome,
     navigationOptions: {
-      header: null,
-    }
-  },
- 
-  Login:{
-    screen:Login,
-   navigationOptions: {
       drawerIcon: () => {
-        return <Fontisto name="heart" size={20}  />
+        return <FontAwesome5Icon name="user-alt" size={20}  />
       }
     
     },
   },
-  Home: {
+  
+ 
+  MyEarnings:{
+    screen:Login,
+   navigationOptions: {
+      drawerIcon: () => {
+        return <FontAwesome5Icon name="money-bill-wave" size={20}  />
+      }
+    
+    },
+  },
+  ChangePassword: {
     screen: Product,
     navigationOptions: {
       drawerIcon: () => {
-        return <Fontisto name="heart" size={20}  />
+        return <FontAwesome5Icon name="key" size={20}  />
       }
     
     },
        
   },
-  Cart: {
+  Logout: {
     screen: Cart,
+    navigationOptions: {
+      drawerIcon: () => {
+        return <FontAwesome5Icon name="power-off" size={20}  />
+      }
+    
+    },
   },
   
 },
@@ -141,14 +156,19 @@ const AppNavigator = createDrawerNavigator({
     </SafeAreaView>
 
   )
-});
+ 
+},
+);
 
 const stylesSidebar = StyleSheet.create({
   sideMenuContainer: {
     width: "100%",
     height: "100%",
-    backgroundColor: "#44bcd8",
-    paddingTop: 40,
+
+    backgroundColor: "white",
+    paddingTop: 0,
+
+
     color: "rgb(0,0,0)",
   },
   imageali: {
@@ -161,14 +181,18 @@ const stylesSidebar = StyleSheet.create({
   },
   
   profileHeader: {
-    flexDirection: "row",
+    flexDirection: "column",
     backgroundColor: "#44bcd8",
-    padding: 15,
+    marginLeft:0,
+    paddingTop:30,
+    paddingLeft:50,
+
+    height:150,
     textAlign: "center",
   },
   profileHeaderPicCircle: {
-    width: 60,
-    height: 60,
+    width: 70,
+    height: 70,
     borderRadius: 60 / 2,
     color: "rgb(0,0,0)",
     backgroundColor: "#ffff",
@@ -178,8 +202,8 @@ const stylesSidebar = StyleSheet.create({
   },
   profileHeaderText: {
     color: "rgb(0,0,0)",
+    right:0,
     alignSelf: "center",
-    paddingHorizontal: 10,
     fontWeight: "bold",
   },
   profileHeaderLine: {

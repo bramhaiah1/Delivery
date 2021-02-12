@@ -13,7 +13,7 @@ import {
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 
-export default class Homescreen extends Component {
+export default class MyProfile extends Component {
  
   render() {
     return (
@@ -23,7 +23,7 @@ export default class Homescreen extends Component {
           style={styles.imageali}
           source={require("../assets/WelcomePage.jpg")}
         ></Image>
-        <Text style={styles.Textsize}>Fast Delivery</Text>
+        <Text style={styles.Textsize}>ProfilePage</Text>
         <TouchableOpacity
           style={styles.button}
           onPress={() => this.props.navigation.navigate("MyEarnings")}

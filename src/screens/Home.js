@@ -30,11 +30,11 @@ class Home extends Component {
     return (
       <View style={ styles.container }>
         <Text style={ styles.sectionTitle }>Product List</Text>
-        <FlatList 
+        {/* <FlatList 
           data={ this.props.products }
           renderItem={ this._renderItem }
           keyExtractor={ this._keyExtractor }
-        />
+        /> */}
       </View>   
     );
   }
