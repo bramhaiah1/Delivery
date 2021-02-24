@@ -37,10 +37,10 @@ class ItemCard extends Component {
 
     return (
       <View style={ styles.itemCard }>
-        <Image source={{ uri: item.image }} style={{ width: 150, height: 150 }}/>
+        <Image source={{ uri: item.image }} style={{ width: 80, height: 50 }}/>
         <View style={ styles.productDetail }>
           <Text style={ styles.productTitle }>{ item.name }</Text>
-          <Text style={ styles.productPrice }>Price: US${ item.price }</Text>
+          <Text style={ styles.productPrice }>#Price{ item.price }</Text>
           <View style={ styles.inputNumberContainer }>
             <TouchableHighlight style={ styles.incDecBtn }>
               <Text 
@@ -80,9 +80,8 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
 const styles = StyleSheet.create({
   itemCard: {
     flex: 1,
-    marginTop: 4,
-    marginBottom: 4,
-    padding: 8,
+    marginTop: 5,
+    marginBottom: 5,
     display: 'flex',
     flexDirection: 'row',
     backgroundColor: '#fff',

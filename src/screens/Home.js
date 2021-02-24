@@ -30,11 +30,16 @@ class Home extends Component {
     return (
       <View style={ styles.container }>
         <Text style={ styles.sectionTitle }>Product List</Text>
-        {/* <FlatList 
-          data={ this.props.products }
+        <FlatList 
+        
+          data={ [{ id: 0, name: 'Mr Puff Coffee Shop', price: 700, image: 'https://doki.co.id/image/cache/data/Handphone/Motorola/Moto%20z/Motorola-moto-z-black-500x500.jpg' },
+          { id: 1, name: 'Ballroom Restaurant', price: 500, image: 'https://doki.co.id/image/cache/data/Handphone/xiaomi/Note%205A/Redmi-note-5a-Grey-500x500.jpg' },
+          { id: 2, name: 'veretto Restaurant', price: 1000, image: 'https://doki.co.id/image/cache/data/Accessories/Tempered Glass/Tempered-Samsung-Galaxy-s8-s8+-500x500h.jpg' },
+          { id: 3, name: 'Little Bite Restaurant', price: 7000, image: 'https://doki.co.id/image/cache/data/Handphone/Elephone/s1/Elephone-s1-black-doki-500x500.jpg' },
+           ] }
           renderItem={ this._renderItem }
           keyExtractor={ this._keyExtractor }
-        /> */}
+        />
       </View>   
     );
   }

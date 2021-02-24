@@ -15,6 +15,7 @@ class ShopingCart extends Component {
   _keyExtractor = (item, idx) => item.id;
 
   _renderItem = ({ item }) => (
+    
     <ItemShopingCart item={ item }/>
   );
 

@@ -1,89 +1,62 @@
-import React, { Component } from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
+import React, { Component } from 'react';
+import { 
   View,
-  button,
-  Image,
-  Div,
-  StatusBar,
-  ImageBackground
-} from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+  Text,
+  FlatList,
+  StyleSheet,
+} from 'react-native';
 
+import ItemShopingCart from '../components/ItemShoppingCart';
 
-export default class MyProfile extends Component {
- 
+import { connect } from 'react-redux';
+
+class MyProfile extends Component {
+
+  _keyExtractor = (item, idx) => item.id;
+
+  _renderItem = ({ item }) => (
+    <ItemShopingCart item={ item }/>
+  );
+
   render() {
+    const { cartItems, total } = this.props;
     return (
-      <View style={styles.container}>
-        <StatusBar hidden={false}/>
-        <Image
-          style={styles.imageali}
-          source={require("../assets/WelcomePage.jpg")}
-        ></Image>
-        <Text style={styles.Textsize}>ProfilePage</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => this.props.navigation.navigate("MyEarnings")}
-        >
-          <Text style={styles.buttonText}>Click To Continue</Text>
-        </TouchableOpacity>
+      <View style={ styles.container }>
+        <Text style={ styles.sectionTitle }>Welcome to My Profile</Text>
+        {/* <FlatList
+         style={{ flexGrow: 0 }}
+         data={ cartItems }
+         keyExtractor={ this._keyExtractor }
+         renderItem={ this._renderItem }
+        /> */}
+        <Text style={ styles.total }>Profile Details</Text>
       </View>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  cartItems: state.carts.items,
+  total: state.carts.total,
+});
+
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 12,
-    flex: 1
-    
-   
+    flex: 1,
+    margin: 16,
   },
-  button: {
-    borderRadius: 15,
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    backgroundColor: "#05075d",
-    marginTop: 480,
-    width: 300,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 35,
-    position: "absolute",
-    height:50,
-    top:20
+  sectionTitle: {
+    fontSize: 24,
   },
-  buttonText: {
-    color: "white",
-    fontWeight: "bold",
-    textTransform: "uppercase",
+  total: { 
+    padding: 8,
+    backgroundColor: '#fff',
     fontSize: 16,
-    textAlign: "center",
-    width: 300,
-    justifyContent: "center",
-    alignItems: "center",
-    position: "absolute",
-  },
-  imageali: {
-    borderRadius: 20,
-    height: 300,
-    width: 330,
-    margin:15,
-    top:15,
-    
-  },
-  Textsize:{
-    fontSize:40,
-    marginTop:42,
-    fontWeight: "bold",
-
-    textAlign:"center",
-    fontFamily: "sans-serif",
-
-    
-    
+    fontWeight: 'bold',
+    textAlign: 'right',
+    marginTop: 4,
+    marginBottom: 4,
   }
-  
 });
+
+export default connect(mapStateToProps)(MyProfile);

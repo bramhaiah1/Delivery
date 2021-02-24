@@ -24,48 +24,33 @@ import MyProfile from "./src/screens/MyProfile"
 import Home from './src/screens/Home';
 import Cart from './src/screens/ShopingCart';
 import LoginScreen from './src/screens/LoginScreen'
+import Logout from './src/screens/Logout'
+import ChangePassword from './src/screens/ChangePassword'
+import MyEarnings from './src/screens/MyEarnings'
+
+
 import { View ,Text} from 'react-native';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
-const Welcome = createStackNavigator(
+const LoginModule = createStackNavigator(
   {
+    
     welcome: {
       screen: WelcomeScreen,
-      navigationOptions: ({ navigation }) => ({
-
-
-        headerLeft: () => <NavigationDrawerHeader navigationProps={navigation} />,
-      
+      navigationOptions: ({ navigation }) => ({      
       headerShown:false,
     }),
     },
-  },
-  
-);
-
-const Login = createStackNavigator(
-  {
     login: {
       screen: LoginScreen,
       navigationOptions: ({ navigation }) => ({
-
-
-        headerLeft: () => <NavigationDrawerHeader navigationProps={navigation} />,
         headerShown:false,
         
       }),
     },
-  },
-  
-);
-
-const Product = createStackNavigator(
-  {
     product: {
       screen: Home,
       navigationOptions: ({ navigation }) => ({
-
-
         headerLeft: () => <NavigationDrawerHeader navigationProps={navigation} />,
         headerTitle: "Product",
         headerTitleAlign:"center",
@@ -74,12 +59,80 @@ const Product = createStackNavigator(
           ),
       }),
     },
+    cart: {
+      screen: Cart,
+      navigationOptions: {
+        drawerIcon: () => {
+          return <FontAwesome5Icon name="power-off" size={20}  />
+        }
+      
+      },
+    },
+  
+}
+);
+const MyProfile1 = createStackNavigator(
+  {
+    MyEarnings: {
+      screen: MyProfile,
+      navigationOptions: ({ navigation }) => ({      
+      headerShown:false,
+    }),
+    },
+  },
+  
+);
+const MyEarnings1 = createStackNavigator(
+  {
+    MyEarnings: {
+      screen: MyEarnings,
+      navigationOptions: ({ navigation }) => ({      
+      headerShown:false,
+    }),
+    },
+  },
+  
+);
+
+const ChangePassword1 = createStackNavigator(
+  {
+    ChangePassword: {
+      screen: ChangePassword,
+      navigationOptions: ({ navigation }) => ({      
+      headerShown:false,
+    }),
+    },
+   
+  },
+  
+);
+const Logout1 = createStackNavigator(
+  {
+    Logout: {
+      screen: Logout,
+      navigationOptions: ({ navigation }) => ({      
+      headerShown:false,
+    }),
+    },
+   
+   
   },
   
 );
 const AppNavigator = createDrawerNavigator({
+ 
+  InitialPage:{
+    screen:LoginModule,
+    navigationOptions: ({navigation}) => {
+      return {
+          drawerLabel: () => null,
+      }
+  
+    
+    },
+  },
   MyProfile:{
-    screen:Welcome,
+    screen:MyProfile1,
     navigationOptions: {
       drawerIcon: () => {
         return <FontAwesome5Icon name="user-alt" size={20}  />
@@ -87,10 +140,9 @@ const AppNavigator = createDrawerNavigator({
     
     },
   },
-  
  
   MyEarnings:{
-    screen:Login,
+    screen:MyEarnings1,
    navigationOptions: {
       drawerIcon: () => {
         return <FontAwesome5Icon name="money-bill-wave" size={20}  />
@@ -99,7 +151,7 @@ const AppNavigator = createDrawerNavigator({
     },
   },
   ChangePassword: {
-    screen: Product,
+    screen: ChangePassword1,
     navigationOptions: {
       drawerIcon: () => {
         return <FontAwesome5Icon name="key" size={20}  />
@@ -109,7 +161,7 @@ const AppNavigator = createDrawerNavigator({
        
   },
   Logout: {
-    screen: Cart,
+    screen: Logout1,
     navigationOptions: {
       drawerIcon: () => {
         return <FontAwesome5Icon name="power-off" size={20}  />

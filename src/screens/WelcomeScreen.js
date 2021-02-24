@@ -26,7 +26,7 @@ export default class Homescreen extends Component {
         <Text style={styles.Textsize}>Fast Delivery</Text>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => this.props.navigation.navigate("MyEarnings")}
+          onPress={() => this.props.navigation.navigate("login")}
         >
           <Text style={styles.buttonText}>Click To Continue</Text>
         </TouchableOpacity>
